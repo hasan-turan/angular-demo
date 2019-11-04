@@ -21,7 +21,10 @@
       name="categoryId"
       required
     >
-      <option *ngFor="let category of categories" [value]="category.id">
+      <option
+        *ngFor="let category of categories; let i = index"
+        [value]="category.id"
+      >
         {{ category.categoryName }}
       </option>
     </select>
@@ -110,7 +113,7 @@
     <input
       type="text"
       placeholder="Image Url"
-      #unitPrice="ngModel"
+      #imageUrl="ngModel"
       [(ngModel)]="model.imageUrl"
       class="form-control"
       id="imageUrl"
@@ -121,4 +124,11 @@
       Image Url Is Required
     </div>
   </div>
+  <button
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="productForm.invalid"
+  >
+    Save
+  </button>
 </form>

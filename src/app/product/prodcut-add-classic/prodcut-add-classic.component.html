@@ -1,0 +1,124 @@
+<h3>Add new product</h3>
+<form #productForm="ngForm" (ngSubmit)="add(productForm)">
+  <div class="form-group">
+    <input
+      type="number"
+      placeholder="Id"
+      #id="ngModel"
+      [(ngModel)]="model.id"
+      class="form-control"
+      id="id"
+      name="id"
+      disabled
+    />
+  </div>
+  <div class="form-group">
+    <select
+      #categoryId="ngModel"
+      [(ngModel)]="model.categoryId"
+      class="form-control"
+      id="categoryId"
+      name="categoryId"
+      required
+    >
+      <option *ngFor="let category of categories" [value]="category.id">
+        {{ category.categoryName }}
+      </option>
+    </select>
+    <div
+      *ngIf="categoryId.invalid && categoryId.touched"
+      class="alert alert-danger"
+    >
+      Category is required
+    </div>
+  </div>
+  <div class="form-group">
+    <input
+      type="text"
+      placeholder="Name"
+      #productName="ngModel"
+      [(ngModel)]="model.productName"
+      class="form-control"
+      id="productName"
+      name="productName"
+      required
+    />
+    <div
+      *ngIf="productName.invalid && productName.dirty"
+      class="alert alert-danger"
+    >
+      Product name is required
+    </div>
+  </div>
+  <div class="form-group">
+    <input
+      type="text"
+      placeholder="Quantity Per Unit"
+      #quantityPerUnit="ngModel"
+      [(ngModel)]="model.quantityPerUnit"
+      class="form-control"
+      id="quantityPerUnit"
+      name="quantityPerUnit"
+      required
+    />
+    <div
+      *ngIf="quantityPerUnit.invalid && quantityPerUnit.dirty"
+      class="alert alert-danger"
+    >
+      Quantity Per Unit Is Required
+    </div>
+  </div>
+  <div class="form-group">
+    <input
+      type="text"
+      placeholder="Unit Price"
+      #unitPrice="ngModel"
+      [(ngModel)]="model.unitPrice"
+      class="form-control"
+      id="unitPrice"
+      name="unitPrice"
+      required
+    />
+    <div
+      *ngIf="unitPrice.invalid && unitPrice.dirty"
+      class="alert alert-danger"
+    >
+      Unit Price Is Required
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input
+      type="number"
+      placeholder="Units In Stock"
+      #unitsInStock="ngModel"
+      [(ngModel)]="model.unitsInStock"
+      class="form-control"
+      id="unitsInStock"
+      name="unitsInStock"
+      required
+    />
+    <div
+      *ngIf="unitsInStock.invalid && unitsInStock.dirty"
+      class="alert alert-danger"
+    >
+      Units In Stock Is Required
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input
+      type="text"
+      placeholder="Image Url"
+      #unitPrice="ngModel"
+      [(ngModel)]="model.imageUrl"
+      class="form-control"
+      id="imageUrl"
+      name="imageUrl"
+      required
+    />
+    <div *ngIf="imageUrl.invalid && imageUrl.dirty" class="alert alert-danger">
+      Image Url Is Required
+    </div>
+  </div>
+</form>

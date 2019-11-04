@@ -1,0 +1,42 @@
+<app-category></app-category>
+<div class="form-group">
+  <div class="row">
+    <!-- This is two way data binding. For two way data binding we have to import 
+    FormsModule in app.module.ts file and set it in imports as imports: [BrowserModule, AppRoutingModule, FormsModule],
+    -->
+    <input
+      class="form-control"
+      id="productName"
+      placeholder="Enter text to
+  search"
+      [(ngModel)]="filterText"
+    />
+  </div>
+</div>
+
+<div class="row">
+  <ng-template #noProduct>
+    <div class="alert alert-primary" role="alert">
+      There is no product in this category!
+    </div>
+  </ng-template>
+  <div
+    *ngFor="let product of products | productFilter: filterText"
+    class="card product-box"
+  >
+    <!-- [src]="product.imageUrl" -->
+    <img src="{{ product.imageUrl }}" class="card-img-top" alt="..." />
+    <div class="card-body">
+      <h5 class="card-title">
+        <!-- currency: "USD":true:"1.2-2" currency usd, showsymbol:true, show 2 digits of decimal -->
+        {{ product.productName }}
+        {{ product.unitPrice | currency: "USD":true:"1.2-2" }}
+      </h5>
+      <p class="card-text">
+        Units In Stock: {{ product.unitsInStock }} Quantity Per Unit
+        {{ product.quantityPerUnit }}
+      </p>
+      <a (click)="addToCart(product)" class="btn btn-primary">Sepete Ekle</a>
+    </div>
+  </div>
+</div>

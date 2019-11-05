@@ -13,3 +13,8 @@ npm install nameoflibrary
 ## for generating new angular component
 
 ng generate component componentname
+
+## difference between reacttive and classic forms
+
+in classic forms validation is being made on html but in reactive forms
+in component

@@ -7,10 +7,13 @@ import { NavigationComponent } from "./navigation/navigation.component";
 import { CategoryComponent } from "./category/category.component";
 import { ProductComponent } from "./product/product.component";
 import { ProductFilterPipe } from "./product/product-filter.pipe";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
-import { ProdcutAddClassicComponent } from './product/prodcut-add-classic/prodcut-add-classic.component';
-import { ProdcutAddReactiveComponent } from './product/prodcut-add-reactive/prodcut-add-reactive.component';
+import { ProdcutAddClassicComponent } from "./product/prodcut-add-classic/prodcut-add-classic.component";
+import { ProdcutAddReactiveComponent } from "./product/prodcut-add-reactive/prodcut-add-reactive.component";
+import { LoginComponent } from "./login/login.component";
+import { AuthenticationService } from "./services/authentication.service";
+import LoginGuard from "./login/login.guard";
 
 @NgModule({
   declarations: [
@@ -20,10 +23,17 @@ import { ProdcutAddReactiveComponent } from './product/prodcut-add-reactive/prod
     ProductComponent,
     ProductFilterPipe,
     ProdcutAddClassicComponent,
-    ProdcutAddReactiveComponent
+    ProdcutAddReactiveComponent,
+    LoginComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
+  ],
+  providers: [AuthenticationService, LoginGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -1,0 +1,43 @@
+<form class="form-signin" [formGroup]="loginForm" (ngSubmit)="login()">
+  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+  <label for="inputEmail" class="sr-only">Email address</label>
+  <input
+    formControlName="userName"
+    type="text"
+    id="userName"
+    class="form-control"
+    placeholder="Username"
+    required
+    autofocus
+  />
+  <div
+    class="alert alert-danger"
+    *ngIf="
+      loginForm.get('userName').hasError('required') &&
+      loginForm.get('userName').touched
+    "
+  >
+    Username is required
+  </div>
+  <label for="inputPassword" class="sr-only">Password</label>
+  <input
+    formControlName="password"
+    type="password"
+    id="password"
+    class="form-control"
+    placeholder="Password"
+    required
+  />
+  <div
+    class="alert alert-danger"
+    *ngIf="
+      loginForm.get('password').hasError('required') &&
+      loginForm.get('password').touched
+    "
+  >
+    Username is required
+  </div>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">
+    Sign in
+  </button>
+</form>

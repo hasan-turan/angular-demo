@@ -1,1 +1,137 @@
-<p>prodcut-add-reactive works!</p>
+<h3>New Product with Reactive Form</h3>
+<form [formGroup]="productForm" (ngSubmit)="add()">
+  <div class="form-group">
+    <input
+      type="number"
+      placeholder="Id"
+      formControlName="id"
+      class="form-control"
+      id="id"
+      name="id"
+    />
+  </div>
+  <div class="form-group">
+    <input
+      type="text"
+      id="productName"
+      name="productName"
+      formControlName="productName"
+      placeholder="Product Name"
+      class="form-control"
+    />
+    <div
+      class="alert alert-danger"
+      *ngIf="
+        productForm.get('productName').hasError('required') &&
+        productForm.get('productName').touched
+      "
+    >
+      Product name is required
+    </div>
+    <div
+      class="alert alert-danger"
+      *ngIf="
+        productForm.get('productName').hasError('minlength') &&
+        productForm.get('productName').dity
+      "
+    >
+      Product name must be at least 3 characters
+    </div>
+  </div>
+  <div class="form-group">
+    <select
+      formControlName="categoryId"
+      class="form-control"
+      id="categoryId"
+      name="categoryId"
+      required
+    >
+      <option value="" selected>Select a category </option>
+      <option *ngFor="let category of categories" [value]="category.id">
+        {{ category.categoryName }}
+      </option>
+    </select>
+    <div
+      *ngIf="
+        productForm.get('categoryId').hasError('required') &&
+        productForm.get('categoryId').touched
+      "
+      class="alert alert-danger"
+    >
+      Category is required
+    </div>
+  </div>
+  <div class="form-group">
+    <input
+      type="text"
+      placeholder="Quantity Per Unit"
+      formControlName="quantityPerUnit"
+      class="form-control"
+      id="quantityPerUnit"
+      name="quantityPerUnit"
+      required
+    />
+    <div
+      *ngIf="
+        productForm.get('quantityPerUnit').hasError('required') &&
+        productForm.get('quantityPerUnit').touched
+      "
+      class="alert alert-danger"
+    >
+      Quantity Per Unit Is Required
+    </div>
+  </div>
+  <div class="form-group">
+    <input
+      type="text"
+      placeholder="Unit Price"
+      formControlName="unitPrice"
+      class="form-control"
+      id="unitPrice"
+      name="unitPrice"
+      required
+    />
+    <div
+      *ngIf="
+        productForm.get('unitPrice').hasError('required') &&
+        productForm.get('unitPrice').touched
+      "
+      class="alert alert-danger"
+    >
+      Unit Price Is Required
+    </div>
+  </div>
+  <div class="form-group">
+    <input
+      type="number"
+      placeholder="Units In Stock"
+      formControlName="unitsInStock"
+      class="form-control"
+      id="unitsInStock"
+      name="unitsInStock"
+      required
+    />
+    <div
+      *ngIf="
+        productForm.get('unitsInStock').hasError('required') &&
+        productForm.get('unitsInStock').touched
+      "
+      class="alert alert-danger"
+    >
+      Units In Stock Is Required
+    </div>
+  </div>
+  <div class="form-group">
+    <input
+      type="text"
+      placeholder="Image Url"
+      formControlName="imageUrl"
+      class="form-control"
+      id="imageUrl"
+      name="imageUrl"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">
+    Save
+  </button>
+</form>

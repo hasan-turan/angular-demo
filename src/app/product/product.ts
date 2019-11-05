@@ -1,8 +1,7 @@
 export default class Product {
   id: number;
   productName: string;
-  price: number;
+  unitPrice: number;
   categoryId: number;
-  description: string;
   imageUrl: string;
 }
